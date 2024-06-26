@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chef's Lucky Letter</title>
+</head>
+
+<body>
+    <h1>Chef's Lucky Letter Finder</h1>
+    <label for="inputString">Enter the first 10 letters Chef saw today:</label>
+    <input type="text" id="inputString" maxlength="10" placeholder="Enter 10 letters"><br><br>
+    <button onclick="findLuckyLetter()">Find Lucky Letter</button>
+    <p id="result"></p>
+
+    <script>
+        function findLuckyLetter() {
+            // Get the input value
+            const input = document.getElementById('inputString').value.trim();
+
+            // Validate the input length and content
+            if (input.length !== 10 || !/^[a-z]+$/.test(input)) {
+                document.getElementById('result').innerText = "Please enter exactly 10 lowercase Latin letters.";
+                return;
+            }
+
+            // Extract the 7th letter (index 6)
+            const luckyLetter = input.charAt(6);
+
+            // Display the result
+            document.getElementById('result').innerText = "The lucky letter is: " + luckyLetter;
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html> 
+    <style> 
+
+    </style>
+    <body> 
+        <div> 
+         <p> Test Case</p>   
+                <input id="C"   placeholder="C = cat" type="number" > 
+                <input id="D"    placeholder="D = Dog" type="number" >
+                <input id="L"    placeholder="L no of legs" type="number">
+               <button id="button" onclick="myFunction()"> Enter </button>
+               <p id="P1"> Answer will be displayed here</p>
+        </div>
+
+    </body>
+
+
+    <script >
+
+
+        function myFunction() {   
+            // store the needed inputs
+            var Cats = document.getElementById("C").value;
+            var Dogs = document.getElementById("D").value;
+            var Legs = document.getElementById("L").value;
+            
+    
+
+          // specifications for the max and min number of legs 
+       var maxLegs = 4*(Dogs + Cats);
+       var minLegs = 4*Dogs + (Cats > 2*Dogs ?  4*(Cats-2*Dogs)  :0 )
+           
+    var isValid = Legs % 4 === 0 && Legs >= maxLegs && Legs <= minLegs;
+
+    if (isValid) {
+        document.getElementById("P1").innerHTML = "Yes";
+    } else {
+        document.getElementById("P1").innerHTML = "No";
+    }
+
+ 
+          console.log(maxLegs)
+           console.log(minLegs);
+         
+
+              
+
+            }
+    </script>
+</html>

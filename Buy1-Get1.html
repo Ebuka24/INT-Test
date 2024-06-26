@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jewelry Discount Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        input,
+        button {
+            margin-top: 10px;
+        }
+
+        #result {
+            margin-top: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Jewelry Discount Calculator</h1>
+    <label for="jewelString">Enter Jewels String:</label>
+    <input type="text" id="jewelString" name="jewelString" placeholder="Type jewels string..." required><br><br>
+    <button type="button" onclick="calculateCost()">Calculate Cost</button>
+
+    <p id="result"></p>
+
+    <script>
+        function calculateCost() {
+            const jewels = document.getElementById('jewelString').value.trim();
+            const cost = minCost(jewels);
+            document.getElementById('result').innerText = "Minimum Cost:" + cost;
+        }
+
+        function minCost(jewels) {
+            const frequency = {};
+
+            // Count the frequency of each jewel
+            for (let jewel of jewels) {
+                if (frequency[jewel]) {
+                    frequency[jewel]++;
+                } else {
+                    frequency[jewel] = 1;
+                }
+            }
+
+            // Calculate the minimum cost
+            let cost = 0;
+            for (let key in frequency) {
+                cost += Math.ceil(frequency[key] / 2);
+            }
+
+            return cost;
+        }
+    </script>
+</body>
+
+</html>
